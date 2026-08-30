@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="hero-banner" style="background-image:url('https://picsum.photos/seed/interaction1/1200/400')">
+    <div class="instructor"><img src="https://i.pravatar.cc/80?img=32" alt="Course lead"></div>
+    <div class="hero-text">
+      <h1>IS71092D: INTERACTION SCIENCE (2025-26)</h1>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="v3-course-is.html">Course</a>
+    <a href="v3-assignment-is.html" class="active">Assessment</a>
+    <a href="v3-reading-list.html?c=is">Reading List</a>
+    <a href="v3-participant.html?c=is">Participant</a>
+    <a href="v3-instructor.html?c=is">Instructor</a>
+    <div class="tab-add">
+      <button class="tab-add-btn" title="Add a section to this course" aria-haspopup="true">+</button>
+      <div class="tab-add-panel">
+        <div class="tab-add-head">Add section</div>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="quiz"><span>Quiz</span></label>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="resources"><span>Resources</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="assign-main" style="max-width:900px;margin:0 auto;">
+
+    <div class="section-head" style="margin-bottom:12px;">
+      <h2 style="font-size:18px;">Assessment &amp; Feedback</h2>
+    </div>
+
+    <div class="assignment-block card">
+      <h3>Assignment 1 · Wizard-of-Oz Study Report</h3>
+      <div class="deadline-tag">Due: 8 Aug 2026, 23:59</div>
+      <div class="info-accordion">
+        <div class="info-row">
+          <div class="info-row-head"><span>Submission</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>Run a small Wizard-of-Oz study on a peer, simulating a sensing or AI-driven interaction without the real technology behind it, and submit a written report analysing what you observed and what it reveals about designing for that interaction.</p>
+            <div class="doc-chip">📄 IS_Assignment1_Brief.docx</div>
+            <div class="upload-area">
+              <p>⬆ Drag files here or click to upload your submission</p>
+              <button class="primary">Choose file</button>
+            </div>
+          </div>
+        </div>
+        <div class="info-row collapsed">
+          <div class="info-row-head"><span>Turnitin</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>Your submission is automatically checked against Turnitin's database for originality. You can view and re-check your similarity report as many times as you like before the deadline — only your latest submission is scored.</p>
+            <div class="doc-chip">🛡️ Similarity report will appear here after upload</div>
+          </div>
+        </div>
+        <div class="info-row collapsed">
+          <div class="info-row-head"><span>Grades</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>Graded against the module's standard marking rubric: study design (30%), quality of observation (40%), and analysis (30%). Your final grade will be released here once marking and moderation are complete.</p>
+          </div>
+        </div>
+        <div class="info-row collapsed">
+          <div class="info-row-head"><span>Marker Feedback</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>Written feedback from your marker will appear here once grading is complete — use it to inform your final project.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Assessment Page</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

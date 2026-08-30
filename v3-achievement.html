@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievement Board · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a href="v3-dashboard.html" class="back-link">← Back to Dashboard</a>
+
+  <div class="achv-head">
+    <div>
+      <div class="eyebrow">Academic Year 2024–25</div>
+      <h1>Achievement Board</h1>
+      <p>Track grades, credits, and your academic growth over time.</p>
+    </div>
+    <div class="actions">
+      <button class="ghost">🗓 Term Selector</button>
+      <button class="primary">⤓ Export Report</button>
+    </div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric-card">
+      <div class="m-ic blue">📘</div>
+      <div>
+        <div class="m-label">Average Score Range</div>
+        <div class="m-num">75</div>
+        <div class="m-sub up">↑ 0.02 vs last term</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="m-ic purple">🎓</div>
+      <div style="width:100%;">
+        <div class="m-label">Credits Earned</div>
+        <div class="m-num">120<span style="font-size:12px;color:var(--ink-soft);font-weight:600;">/180</span></div>
+        <div class="m-progress"><span style="width:67%"></span></div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="m-ic green">✔</div>
+      <div>
+        <div class="m-label">Courses Completed</div>
+        <div class="m-num">12</div>
+        <div class="m-sub">3 in progress</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="m-ic orange">⚡</div>
+      <div>
+        <div class="m-label">Activity Attended</div>
+        <div class="m-num">7</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="achv-columns">
+    <div>
+      <div class="section-sub-head"><h3>📊 Grades Analysis</h3><span class="muted-link">Term 2 · 2024–25</span></div>
+
+      <div class="grade-card">
+        <div class="grade-card-head">
+          <div><div class="code">IS71092C</div><h4>Interaction Science: Advanced Topics</h4></div>
+          <div class="grade-pill b">B+<div style="font-size:10px;font-weight:600;text-align:right;">79%</div></div>
+        </div>
+        <div class="grade-row overall"><span>Course Progress</span><div class="bar"><span style="width:74%"></span></div><span>74%</span></div>
+        <div class="grade-sub-list">
+          <div class="grade-sub-row"><div class="top"><span>Assignments (35%)</span><span>72%</span></div><div class="bar"><span style="width:72%"></span></div></div>
+          <div class="grade-sub-row"><div class="top"><span>Seminar Participation (25%)</span><span>85%</span></div><div class="bar"><span style="width:85%"></span></div></div>
+          <div class="grade-sub-row"><div class="top"><span>Portfolio (40%)</span><span>76%</span></div><div class="bar"><span style="width:76%"></span></div></div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-head">
+          <div><div class="code">IS71093C</div><h4>Applied UX Topics and Guest Lectures</h4></div>
+          <div class="grade-pill a">A<div style="font-size:10px;font-weight:600;text-align:right;">91%</div></div>
+        </div>
+        <div class="grade-row overall"><span>Overall Progress</span><div class="bar"><span style="width:91%"></span></div><span>91%</span></div>
+        <div class="grade-sub-list">
+          <div class="grade-sub-row"><div class="top"><span>Case Study Report (40%)</span><span>94%</span></div><div class="bar"><span style="width:94%"></span></div></div>
+          <div class="grade-sub-row"><div class="top"><span>Live Critique (35%)</span><span>88%</span></div><div class="bar"><span style="width:88%"></span></div></div>
+          <div class="grade-sub-row"><div class="top"><span>Reflective Journal (25%)</span><span>91%</span></div><div class="bar"><span style="width:91%"></span></div></div>
+        </div>
+      </div>
+
+      <div class="grade-card">
+        <div class="grade-card-head">
+          <div><div class="code">DS40101A</div><h4>Foundations of Digital Design</h4></div>
+          <div class="grade-pill b">B<div style="font-size:10px;font-weight:600;text-align:right;">74%</div></div>
+        </div>
+        <div class="grade-row overall"><span>Overall Progress</span><div class="bar"><span style="width:74%"></span></div><span>74%</span></div>
+        <div class="grade-sub-list">
+          <div class="grade-sub-row"><div class="top"><span>Design Portfolio (45%)</span><span>76%</span></div><div class="bar"><span style="width:76%"></span></div></div>
+          <div class="grade-sub-row"><div class="top"><span>Theory Exam (35%)</span><span>69%</span></div><div class="bar"><span style="width:69%"></span></div></div>
+          <div class="grade-sub-row"><div class="top"><span>Peer Review (20%)</span><span>80%</span></div><div class="bar"><span style="width:80%"></span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-sub-head"><h3>📈 Learning Reports</h3></div>
+      <div class="report-card">
+        <h4>Historical Learning Reports</h4>
+        <p class="muted">Since Sept 2022</p>
+        <div class="report-line"><span>Terms Completed</span><span class="val">6 of 8</span></div>
+        <div class="report-line"><span>Highest Score Range</span><span class="val">3.98 · Term 4</span></div>
+        <div class="report-line"><span>Score Trend</span><span class="val up">↑ Improving</span></div>
+        <div class="report-line"><span>Avg. Completion</span><span class="val">88.2%</span></div>
+        <button class="primary">View Term Deadlines</button>
+      </div>
+
+      <div class="report-card">
+        <h4>Quick Actions</h4>
+        <div class="quick-action-row qred"><div class="qi">📄</div>Download Full Transcript</div>
+        <div class="quick-action-row qblue"><div class="qi">✉️</div>Email to Advisor</div>
+      </div>
+
+      <div class="report-card">
+        <h4>Grade Scale</h4>
+        <div class="scale-row"><span><span class="dot" style="background:var(--green)"></span>A / A+</span><span>90–100%</span></div>
+        <div class="scale-row"><span><span class="dot" style="background:var(--blue)"></span>B+ / B</span><span>75–89%</span></div>
+        <div class="scale-row"><span><span class="dot" style="background:var(--orange)"></span>C+ / C</span><span>60–74%</span></div>
+        <div class="scale-row"><span><span class="dot" style="background:var(--red)"></span>D / F</span><span>Below 60%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trend-card">
+    <h4>📉 Historical Performance Trends</h4>
+    <p>GPA and credit accumulation across all completed terms</p>
+    <div class="trend-legend"><span><i></i>GPA</span><span><i class="dashed"></i>Credits</span></div>
+    <svg viewBox="0 0 720 220" style="width:100%;height:auto;">
+      <line x1="40" y1="10" x2="40" y2="190" stroke="var(--line)"/>
+      <line x1="40" y1="190" x2="700" y2="190" stroke="var(--line)"/>
+      <polyline fill="none" stroke="#3452e1" stroke-width="2.5"
+        points="60,140 165,105 270,120 375,60 480,95 585,90 690,85"/>
+      <polyline fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,4"
+        points="60,175 165,158 270,148 375,132 480,118 585,102 690,88"/>
+      <g font-size="10" fill="var(--ink-soft)">
+        <text x="50" y="205">T1'22</text>
+        <text x="150" y="205">T2'22</text>
+        <text x="255" y="205">T1'23</text>
+        <text x="360" y="205">T2'23</text>
+        <text x="465" y="205">T1'24</text>
+        <text x="570" y="205">T2'24</text>
+        <text x="10" y="15">4.00</text>
+        <text x="10" y="192">3.00</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="section-sub-head"><h3>🎓 Academic Year Archive</h3><a class="muted-link" href="#">View All →</a></div>
+  <div class="archive-grid">
+    <div class="archive-card">
+      <span class="archive-year-tag">2022–23</span><span class="yr">Year 1</span>
+      <div class="archive-stat"><span>Score</span><b>75</b></div>
+      <div class="archive-stat"><span>Credits</span><b>40 earned</b></div>
+      <div class="archive-stat"><span>Courses</span><b>4 completed</b></div>
+      <div class="archive-stat"><span>Standing</span><b style="color:var(--green)">● Good</b></div>
+      <button class="pdf-btn">⤓ Download PDF</button>
+    </div>
+    <div class="archive-card">
+      <span class="archive-year-tag">2023–24</span><span class="yr">Year 2</span>
+      <div class="archive-stat"><span>Score</span><b>60</b></div>
+      <div class="archive-stat"><span>Credits</span><b>40 earned</b></div>
+      <div class="archive-stat"><span>Courses</span><b>5 completed</b></div>
+      <div class="archive-stat"><span>Standing</span><b style="color:var(--green)">● Good</b></div>
+      <button class="pdf-btn">⤓ Download PDF</button>
+    </div>
+    <div class="archive-card current">
+      <span class="archive-year-tag">2024–25</span><span class="cur-badge">CURRENT</span>
+      <div style="clear:both;"></div>
+      <span class="yr">Year 3</span>
+      <div class="archive-stat"><span>Score</span><b>67</b></div>
+      <div class="archive-stat"><span>Credits</span><b>40 / 60 target</b></div>
+      <div class="archive-stat"><span>Courses</span><b>3 in progress</b></div>
+      <div class="archive-stat"><span>Standing</span><b style="color:var(--blue)">● Ongoing</b></div>
+      <button class="pdf-btn">⤓ Download Interim PDF</button>
+    </div>
+    <div class="archive-card projected">
+      <div class="proj-icon">🔮</div>
+      <b>2025–26</b>
+      <p style="font-size:11px;margin:6px 0;">Projected final year based on current trajectory</p>
+      <div>Est. Score: <span class="est">↗ 76</span></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Achievement Board</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

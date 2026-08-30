@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructor · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="hero-banner" style="background-image:url('https://picsum.photos/seed/applieduxguest/1200/400')">
+    <div class="instructor"><img src="https://i.pravatar.cc/80?img=47" alt="Course lead"></div>
+    <div class="hero-text">
+      <h1>IS71093C: APPLIED UX TOPICS AND GUEST LECTURES (2025-26)</h1>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="v3-course.html">Course</a>
+    <a href="v3-assignment.html">Assessment</a>
+    <a href="v3-reading-list.html">Reading List</a>
+    <a href="v3-participant.html">Participant</a>
+    <a href="v3-instructor.html" class="active">Instructor</a>
+    <div class="tab-add">
+      <button class="tab-add-btn" title="Add a section to this course" aria-haspopup="true">+</button>
+      <div class="tab-add-panel">
+        <div class="tab-add-head">Add section</div>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="quiz"><span>Quiz</span></label>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="resources"><span>Resources</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="assign-main" style="max-width:820px;margin:0 auto;">
+
+    <div class="instructor-card card">
+      <img class="instructor-photo" src="https://i.pravatar.cc/160?img=47" alt="Dr Rafael Tahir">
+      <div>
+        <h2 style="margin:0 0 4px;font-size:18px;">Dr Rafael Tahir</h2>
+        <p style="margin:0 0 10px;color:var(--ink-soft);font-size:13px;">Module Leader · Department of Computing</p>
+        <p style="margin:0 0 12px;font-size:13.5px;line-height:1.6;">r.tahir@gold.ac.uk · Office: RHB 309</p>
+        <p style="margin:0 0 4px;font-size:13px;font-weight:600;">Office Hours</p>
+        <p style="margin:0 0 12px;color:var(--ink-soft);font-size:13px;">Tuesdays 14:00–16:00, Thursdays 10:00–11:00</p>
+        <button class="primary">📅 Book Office Hours Slot</button>
+      </div>
+    </div>
+
+    <div class="card" style="padding:16px;margin-top:16px;">
+      <h3 style="font-size:14px;margin:4px 4px 12px;">Module Information</h3>
+      <div class="info-accordion">
+        <div class="info-row">
+          <div class="info-row-head"><span>Announcements</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>Week 3's guest talk has been moved to the main lecture theatre (RHB LT1) due to higher-than-expected sign-ups. All other sessions remain in the usual seminar room.</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head"><span>Welcome Message</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>Welcome to Applied UX Topics and Guest Lectures. Across six weeks you'll hear from practising UX professionals and work through the full Discover–Define–Develop–Deliver process toward your UX Design Award portfolio. Come with questions for our guest speakers!</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head"><span>My Goldsmiths Login</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>All timetable changes, room bookings and official module records are managed through My Goldsmiths, not this VLE page.</p>
+            <p><a href="https://my.gold.ac.uk/" target="_blank" rel="noopener">my.gold.ac.uk</a> · <a href="https://www.gold.ac.uk/it/" target="_blank" rel="noopener">IT Service Desk</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head"><span>Learning Outcomes</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>On completion, students will be able to: (1) critically apply UX research and design methods to a real-world brief; (2) evaluate design decisions against user needs and business constraints; (3) communicate design rationale clearly to non-specialist stakeholders.</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head"><span>Accessibility in Learn.gold</span><span class="chev">⌄</span></div>
+          <div class="info-row-body">
+            <p>All slides are available in advance with alt text on images. Recap videos include captions. Contact Disability Services or the module leader directly if you need materials in an alternative format.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Instructor Page</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

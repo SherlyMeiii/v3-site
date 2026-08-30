@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Courses Area · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html" class="active">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a href="v3-dashboard.html" class="back-link">← Back to Dashboard</a>
+
+  <div class="achv-head">
+    <div>
+      <h1>All Courses Area</h1>
+      <p>Manage your enrolments, audit history, and discover new learning paths.</p>
+    </div>
+    <div class="actions">
+      <div class="search-box"><input type="search" id="allCoursesSearch" placeholder="Search courses..."></div>
+      <button class="ghost">⤓ PDF</button>
+    </div>
+  </div>
+
+  <section class="area-card">
+  <div class="section-sub-head">
+    <h3>My Enrolled Courses</h3>
+    <button class="row-toggle" id="enrolledToggle" data-grid="enrolledGrid">Show all ⌄</button>
+  </div>
+  <form class="filter-bar area-filter" id="enrolledFilter" onsubmit="return false;">
+    <div class="search-box">🔍 <input type="search" placeholder="Search course name..."></div>
+    <select class="filter-select" data-filter="status">
+      <option value="">Status: All</option>
+      <option value="active">Active</option>
+      <option value="completed">Completed</option>
+    </select>
+    <select class="filter-select" data-filter="year">
+      <option value="">Year: All</option>
+      <option value="1">Year 1</option>
+      <option value="2">Year 2</option>
+      <option value="3">Year 3</option>
+    </select>
+  </form>
+  <div class="course-grid clamped" id="enrolledGrid">
+    <div class="course-card" data-name="interaction science advanced topics" data-status="active" data-year="2" onclick="location.href='v3-course-is.html'">
+      <div class="course-cover" style="background:linear-gradient(135deg,#7b2ff7,#f107a3,#f7b733);">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">IS71092C</div>
+        <div class="course-title">Interaction Science: Advanced Topics</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:65%"></span></div><span class="pct">65%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="applied ux topics and guest lectures" data-status="active" data-year="3" onclick="location.href='v3-course.html'">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/applieduxguest/400/220')">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">IS71093C</div>
+        <div class="course-title">Applied UX Topics and Guest Lectures</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:87%"></span></div><span class="pct">87%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="foundations of digital design" data-status="completed" data-year="1">
+      <div class="course-cover" style="background:#ececec;display:flex;align-items:center;justify-content:center;">
+        <span class="enroll-badge complete">✓ COMPLETED</span>
+        <span style="font-family:serif;font-style:italic;color:#999;font-size:13px;">Certificate of Completion</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">DS40101A</div>
+        <div class="course-title">Foundations of Digital Design</div>
+        <div class="completed-tag"><span>Completed on</span><b>12 Jan 2025</b></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="information architecture" data-status="active" data-year="2">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course2/400/220')">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">IA20200</div>
+        <div class="course-title">Information Architecture</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:60%"></span></div><span class="pct">60%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="usability testing and evaluation" data-status="active" data-year="2">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course4/400/220')">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">UT30300</div>
+        <div class="course-title">Usability Testing &amp; Evaluation</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:70%"></span></div><span class="pct">70%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="visual design and typography" data-status="active" data-year="1">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course5/400/220')">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">VD40200</div>
+        <div class="course-title">Visual Design &amp; Typography</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:45%"></span></div><span class="pct">45%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="user research methods" data-status="active" data-year="1">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course9/400/220')">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">UR20400</div>
+        <div class="course-title">User Research Methods</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:38%"></span></div><span class="pct">38%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="design systems and component libraries" data-status="active" data-year="3">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course7/400/220')">
+        <span class="enroll-badge active">ACTIVE</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">DS60200</div>
+        <div class="course-title">Design Systems &amp; Component Libraries</div>
+        <div class="course-progress"><div class="progress-bar"><span style="width:20%"></span></div><span class="pct">20%</span></div>
+      </div>
+    </div>
+    <div class="course-card" data-name="human-computer interaction" data-status="completed" data-year="3">
+      <div class="course-cover" style="background:#ececec;display:flex;align-items:center;justify-content:center;">
+        <span class="enroll-badge complete">✓ COMPLETED</span>
+        <span style="font-family:serif;font-style:italic;color:#999;font-size:13px;">Certificate of Completion</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">HCI50100</div>
+        <div class="course-title">Human-Computer Interaction</div>
+        <div class="completed-tag"><span>Completed on</span><b>03 Jun 2025</b></div>
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+  <section class="area-card">
+  <div class="section-sub-head"><h3>Auditing Courses</h3></div>
+  <div class="course-grid">
+    <div class="course-card">
+      <div class="course-cover audit-cover">
+        <span class="enroll-badge auditing">AUDITING</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">FP10200</div>
+        <div class="course-title">Frontend Prototyping</div>
+        <div style="font-size:11.5px;color:var(--ink-soft);">📅 Ends Mar 2026</div>
+      </div>
+      <div class="enroll-actions"><button class="enroll-primary">Enrol request</button></div>
+    </div>
+    <div class="course-card">
+      <div class="course-cover" style="background-image:url('https://picsum.photos/seed/leanagile/400/220')">
+        <span class="enroll-badge auditing">AUDITING</span>
+      </div>
+      <div class="course-body">
+        <div style="font-size:10.5px;color:var(--ink-soft);">LCUX300</div>
+        <div class="course-title">Lean &amp; Agile UX</div>
+        <div style="font-size:11.5px;color:var(--ink-soft);">📅 Ends Apr 2026</div>
+      </div>
+      <div class="enroll-actions"><button class="enroll-primary">Enrol request</button></div>
+    </div>
+    <div class="browse-card" data-browse="auditing">
+      <div class="plus-circle">+</div>
+      Browse catalog
+    </div>
+  </div>
+
+  </section>
+
+  <section class="area-card">
+  <div class="section-sub-head"><h3>Discover</h3>
+    <span class="muted-link">External learning &amp; certification resources</span></div>
+  <div class="course-grid">
+    <div class="course-card discover-card">
+      <div class="course-cover res-cover gold"><span class="res-emoji">🏅</span></div>
+      <div class="course-body">
+        <div class="res-kind">Employability scheme</div>
+        <div class="course-title">Gold Award</div>
+        <p>Goldsmiths' employability award — build and evidence skills alongside your degree.</p>
+      </div>
+      <div class="enroll-actions">
+        <button class="enroll-primary">Enrol request</button>
+        <button class="enroll-secondary">Details</button>
+      </div>
+    </div>
+    <div class="course-card discover-card">
+      <div class="course-cover res-cover blue"><span class="res-emoji">📝</span></div>
+      <div class="course-body">
+        <div class="res-kind">Tool</div>
+        <div class="course-title">Turnitin</div>
+        <p>Similarity checking and originality reports for your written submissions.</p>
+      </div>
+      <div class="enroll-actions">
+        <button class="enroll-primary">Enrol request</button>
+        <button class="enroll-secondary">Details</button>
+      </div>
+    </div>
+    <div class="course-card discover-card">
+      <div class="course-cover res-cover green"><span class="res-emoji">⚽</span></div>
+      <div class="course-body">
+        <div class="res-kind">Society</div>
+        <div class="course-title">Sports Club</div>
+        <p>Students' Union clubs and societies — badminton, football, climbing and more.</p>
+      </div>
+      <div class="enroll-actions">
+        <button class="enroll-primary">Enrol request</button>
+        <button class="enroll-secondary">Details</button>
+      </div>
+    </div>
+    <div class="browse-card" onclick="alert('Course catalog demo — not wired up yet.')">
+      <div class="plus-circle">+</div>
+      Browse Catalog
+    </div>
+  </div>
+  </section>
+
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · All Courses Area</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

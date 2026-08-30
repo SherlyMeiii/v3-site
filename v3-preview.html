@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material Preview · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Breadcrumb, per the Figma "after clicking the material" page frame -->
+  <div class="pv-breadcrumb" id="pvBreadcrumb">Table of Contents &gt; Week &gt; Material</div>
+
+  <div class="pv-title-row">
+    <h1 id="pvTitle">Loading…</h1>
+    <div class="pv-title-actions">
+      <button class="icon-btn" id="pvBookmarkIcon" title="Bookmark">☆</button>
+      <button class="icon-btn" id="pvExpandIcon" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <div class="pv-layout">
+    <div class="pv-doc card" id="pvDoc">
+      <div id="pvPptWrap" hidden>
+        <span class="pv-format-tag" id="pvFormatTag">PowerPoint</span>
+        <h2 id="pvDocHeadingPpt">—</h2>
+        <p id="pvDocIntroPpt"></p>
+        <ul class="pv-slide-bullets" id="pvBullets"></ul>
+        <p class="pv-tip" id="pvDocTipPpt"></p>
+        <div class="pv-slide-footer" id="pvSlideFooter"></div>
+      </div>
+
+      <div id="pvWordWrap" hidden>
+        <span class="pv-format-tag" id="pvFormatTagWord">Word Document</span>
+        <h2 id="pvDocHeading">—</h2>
+        <p id="pvDocIntro"></p>
+        <p class="pv-note" id="pvDocNote"></p>
+        <p class="pv-tip" id="pvDocTip"></p>
+
+        <table class="pv-table">
+          <thead><tr><th>Section</th><th>Details</th><th>Approx. time</th></tr></thead>
+          <tbody id="pvTableBody"></tbody>
+        </table>
+        <div class="pv-word-footer" id="pvWordFooter"></div>
+      </div>
+
+      <div class="pv-activity">
+        <h4>Activity Details</h4>
+        <label class="pv-activity-check">
+          <input type="checkbox" id="pvCompleteCheck">
+          <span id="pvCompleteLabel">Mark this item as complete</span>
+        </label>
+      </div>
+    </div>
+
+    <aside class="pv-quicklinks card">
+      <h4>Quick Links</h4>
+      <a href="#" id="pvDownload">⬇ Download <span id="pvDownloadExt">File</span></a>
+      <a href="v3-calendar.html">🗓 Exam Schedule</a>
+      <a href="https://www.gold.ac.uk/students/" target="_blank" rel="noopener">🎓 Student Support</a>
+    </aside>
+  </div>
+
+  <a id="backLink" href="v3-course.html" class="back-link" style="display:inline-block;margin-top:16px;">← Back to Weekly Materials</a>
+
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Material Preview</footer>
+
+<script src="v3-script.js"></script>
+<script>
+// This page is a real, standalone page (not a popup) — every material item on the Course
+// page links here with its own id/title/type/week in the URL, so this one template covers
+// all 23 materials. Structure follows the Figma "after clicking the material" page frame:
+// breadcrumb, title row with bookmark + expand icons, an embedded document-style content
+// card (heading / intro / tip / section table), a Quick Links panel, and an Activity
+// Details completion checkbox at the bottom.
+(function(){
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id') || '';
+  const title = params.get('title') || 'Untitled material';
+  const type = params.get('type') || 'slide';
+  const week = params.get('week') || '';
+  const weekLabel = week ? ('Week ' + week.replace('week','')) : 'Week';
+
+  const CONTENT = {
+    slide: {
+      heading: 'Your ' + weekLabel + ' Study Programme',
+      intro: 'This programme will guide you step by step through this week\'s introduction slides, so you cover all of the section content in order.',
+      note: '* The approximate times given cover all tasks relating to that section, including any "Next steps" you\'ll see in the course. Everyone studies at a slightly different pace, so this is just a guide.',
+      tip: 'Tip: Assessments are highlighted. If your course is funded by your employer and/or you are an Apprentice, your assessment scores will be reported to them.',
+      rows: [['1','Look at the guidance information in \'Start Here\'','15 mins'],['2','Read through the introduction slide deck','30 mins'],['3','Note down 2–3 questions for the seminar','15 mins']]
+    },
+    talk: {
+      heading: weekLabel + ' Guest Talk',
+      intro: 'This programme covers this week\'s guest speaker session — watch the recording (or attend live) and review the accompanying slides.',
+      note: '* The approximate times given cover all tasks relating to that section. Everyone studies at a slightly different pace, so this is just a guide.',
+      tip: 'Tip: Guest talk recordings remain available for the rest of the term — you can revisit them any time from this page.',
+      rows: [['1','Speaker introduction & background','10 mins'],['2','Main talk + case study walkthrough','35 mins'],['3','Q&A recap','15 mins']]
+    },
+    recap: {
+      heading: weekLabel + ' Recap & Catch-up',
+      intro: 'A short recap of this week\'s key points, for anyone catching up or revising before the next session.',
+      note: '* The approximate times given cover all tasks relating to that section. Everyone studies at a slightly different pace, so this is just a guide.',
+      tip: 'Tip: Use this recap alongside the introduction slides if you missed the live session.',
+      rows: [['1','Weekly recap video','12 mins'],['2','Common questions (FAQ)','10 mins']]
+    },
+    reading: {
+      heading: weekLabel + ' Reading List',
+      intro: 'Required and further reading for this week, to support the seminar discussion and your portfolio work.',
+      note: '* The approximate times given cover all tasks relating to that section. Everyone studies at a slightly different pace, so this is just a guide.',
+      tip: 'Tip: Required readings are marked first — further readings are optional but recommended if you want to go deeper.',
+      rows: [['1','Required reading','40 mins'],['2','Further / optional reading','30 mins']]
+    },
+    homework: {
+      heading: weekLabel + ' Homework Brief',
+      intro: 'Instructions and marking criteria for this week\'s homework task, to be completed before the next seminar.',
+      note: '* The approximate times given cover all tasks relating to that section, including any "Next steps" you\'ll see in the course.',
+      tip: 'Tip: Assessments are highlighted. If your course is funded by your employer and/or you are an Apprentice, your assessment scores will be reported to them.',
+      rows: [['1','Task description','10 mins'],['2','Complete the task','2 hours'],['3','Submit via the Assignment page','10 mins']]
+    }
+  };
+  const data = CONTENT[type] || CONTENT.slide;
+  const isPpt = (type === 'slide' || type === 'talk');
+
+  document.title = title + ' · Learn.gold';
+  document.getElementById('pvTitle').textContent = title;
+  document.getElementById('pvBreadcrumb').innerHTML =
+    `<a href="v3-course.html">Table of Contents</a> &gt; <a href="v3-course.html#${week}">${weekLabel}</a> &gt; ${title}`;
+
+  const pvDoc = document.getElementById('pvDoc');
+  document.getElementById('pvDownloadExt').textContent = isPpt ? 'PPTX' : 'Word (.doc)';
+
+  if (isPpt) {
+    pvDoc.classList.add('pv-ppt');
+    document.getElementById('pvPptWrap').hidden = false;
+    document.getElementById('pvDocHeadingPpt').textContent = data.heading;
+    document.getElementById('pvDocIntroPpt').textContent = data.intro;
+    document.getElementById('pvDocTipPpt').textContent = data.tip;
+    document.getElementById('pvBullets').innerHTML = data.rows.map(r =>
+      `<li><strong>${r[1]}</strong> <span class="pv-slide-time">(${r[2]})</span></li>`).join('');
+    document.getElementById('pvSlideFooter').textContent = `Slide 1 of ${data.rows.length + 1} · ${weekLabel}`;
+  } else {
+    pvDoc.classList.add('pv-word');
+    document.getElementById('pvWordWrap').hidden = false;
+    document.getElementById('pvDocHeading').textContent = data.heading;
+    document.getElementById('pvDocIntro').textContent = data.intro;
+    document.getElementById('pvDocNote').textContent = data.note;
+    document.getElementById('pvDocTip').textContent = data.tip;
+    document.getElementById('pvTableBody').innerHTML = data.rows.map(r=>
+      `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+    document.getElementById('pvWordFooter').textContent = `Page 1 of 1 · ${weekLabel}`;
+  }
+
+  const backHref = week ? `v3-course.html#${id}` : 'v3-course.html';
+  document.getElementById('backLink').href = backHref;
+
+  // Bookmark icon — same localStorage key/id scheme as the Course page's star buttons.
+  const BOOKMARK_KEY='learngold_bookmarks_v3';
+  function getBookmarks(){ try{ return JSON.parse(localStorage.getItem(BOOKMARK_KEY))||[]; }catch(e){ return []; } }
+  function saveBookmarks(list){ try{ localStorage.setItem(BOOKMARK_KEY, JSON.stringify(list)); }catch(e){} }
+  const bmIcon=document.getElementById('pvBookmarkIcon');
+  function refreshBm(){
+    const on=getBookmarks().includes(id);
+    bmIcon.textContent = on ? '★' : '☆';
+    bmIcon.classList.toggle('active',on);
+  }
+  bmIcon.addEventListener('click',()=>{
+    let marks=getBookmarks();
+    marks = marks.includes(id) ? marks.filter(m=>m!==id) : [...marks,id];
+    saveBookmarks(marks);
+    refreshBm();
+  });
+  refreshBm();
+
+  // Expand icon — uses the real browser Fullscreen API so the document card takes over the
+  // whole screen like its own window (not just a CSS size change within the page layout).
+  const expandIcon = document.getElementById('pvExpandIcon');
+  expandIcon.addEventListener('click',()=>{
+    if(!document.fullscreenElement){
+      pvDoc.classList.add('pv-doc-expanded');
+      pvDoc.requestFullscreen?.().catch(()=>{});
+    } else {
+      document.exitFullscreen?.();
+    }
+  });
+  document.addEventListener('fullscreenchange',()=>{
+    const isFull = document.fullscreenElement === pvDoc;
+    pvDoc.classList.toggle('pv-doc-expanded', isFull);
+    expandIcon.textContent = isFull ? '🗗' : '⛶';
+  });
+
+  // Activity Details completion checkbox — same localStorage store as the Course page's
+  // "Mark as Complete" buttons, so ticking it here shows as done there too.
+  const COMPLETE_KEY='learngold_completed_v3';
+  function getCompleted(){ try{ return JSON.parse(localStorage.getItem(COMPLETE_KEY))||[]; }catch(e){ return []; } }
+  function saveCompleted(list){ try{ localStorage.setItem(COMPLETE_KEY, JSON.stringify(list)); }catch(e){} }
+  const check=document.getElementById('pvCompleteCheck');
+  const checkLabel=document.getElementById('pvCompleteLabel');
+  function refreshComplete(){
+    const done=getCompleted().includes(id);
+    check.checked=done;
+    checkLabel.textContent = done ? 'Content completed.' : 'Mark this item as complete';
+  }
+  check.addEventListener('change',()=>{
+    let list=getCompleted();
+    list = check.checked ? [...new Set([...list,id])] : list.filter(x=>x!==id);
+    saveCompleted(list);
+    refreshComplete();
+  });
+  refreshComplete();
+
+  // Download link — generates a real file: an actual .pptx (via PptxGenJS) for slide/talk
+  // materials, or a real Word-openable .doc (HTML-in-.doc, which Word opens natively) for
+  // reading/homework/recap materials — not just a simulated toast.
+  const safeName = (title || 'Learn.gold Material').replace(/[\\/:*?"<>|]/g, '-');
+
+  function downloadPptx(){
+    const pptx = new PptxGenJS();
+    pptx.defineLayout({ name: 'LG_16x9', width: 10, height: 5.63 });
+    pptx.layout = 'LG_16x9';
+
+    const titleSlide = pptx.addSlide();
+    titleSlide.background = { color: '1F2937' };
+    titleSlide.addText(title, { x: 0.5, y: 1.8, w: 9, h: 1.5, fontSize: 32, bold: true, color: 'FFFFFF', align: 'center' });
+    titleSlide.addText(weekLabel + ' · Learn.gold', { x: 0.5, y: 3.3, w: 9, h: 0.6, fontSize: 16, color: '9CA3AF', align: 'center' });
+
+    const contentSlide = pptx.addSlide();
+    contentSlide.background = { color: 'FFFFFF' };
+    contentSlide.addText(data.heading, { x: 0.5, y: 0.4, w: 9, h: 0.8, fontSize: 24, bold: true, color: '111827' });
+    contentSlide.addText(data.intro, { x: 0.5, y: 1.2, w: 9, h: 0.8, fontSize: 13, color: '374151' });
+    contentSlide.addText(
+      data.rows.map(r => ({ text: `${r[1]} (${r[2]})`, options: { bullet: true, breakLine: true } })),
+      { x: 0.5, y: 2.1, w: 9, h: 2.4, fontSize: 14, color: '111827' }
+    );
+    contentSlide.addText(data.tip, { x: 0.5, y: 4.7, w: 9, h: 0.6, fontSize: 11, italic: true, color: '6B7280' });
+
+    pptx.writeFile({ fileName: safeName + '.pptx' });
+  }
+
+  function downloadDoc(){
+    const rowsHtml = data.rows.map(r =>
+      `<tr><td style="padding:6px 10px;border:1px solid #ccc;">${r[0]}</td><td style="padding:6px 10px;border:1px solid #ccc;">${r[1]}</td><td style="padding:6px 10px;border:1px solid #ccc;">${r[2]}</td></tr>`
+    ).join('');
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title></head>
+      <body style="font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#111;line-height:1.6;">
+        <h1 style="border-bottom:2px solid #111;padding-bottom:8px;">${data.heading}</h1>
+        <p>${data.intro}</p>
+        <table style="border-collapse:collapse;width:100%;margin:16px 0;">
+          <thead><tr><th style="padding:6px 10px;border:1px solid #ccc;text-align:left;">Section</th><th style="padding:6px 10px;border:1px solid #ccc;text-align:left;">Details</th><th style="padding:6px 10px;border:1px solid #ccc;text-align:left;">Approx. time</th></tr></thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+        <p style="font-weight:bold;color:#b91c1c;">${data.note}</p>
+        <p style="font-style:italic;color:#555;">${data.tip}</p>
+      </body></html>`;
+    const blob = new Blob(['﻿', html], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = safeName + '.doc';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  document.getElementById('pvDownload').addEventListener('click',(e)=>{
+    e.preventDefault();
+    const el=e.currentTarget;
+    const original=el.innerHTML;
+    el.innerHTML='Preparing…';
+    setTimeout(()=>{
+      try{
+        if (isPpt) downloadPptx(); else downloadDoc();
+        el.innerHTML='✓ Downloaded';
+      }catch(err){
+        el.innerHTML='⚠ Download failed';
+      }
+      setTimeout(()=>{ el.innerHTML=original; },1600);
+    },400);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html" class="active">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="page-head">
+    <h1>Dashboard</h1>
+  </div>
+
+  <!-- ======= Bento widget area (Option B) =======
+       Replaces the old Timeline & Progress + Statistics row + Timetable sections.
+       Left: My Calendar & Timetable (3 sub-zones) · Middle: My Courses ·
+       Right: Score Release · Bottom-right: + Add Widget -->
+  <div class="dash-zone">
+    <div class="dash-zone-head">
+      <h2>Learning Hub</h2>
+      <span class="sub">Term 2 · Week 4 of 10</span>
+    </div>
+
+    <div class="board2">
+
+      <!-- LEFT · merged calendar hub -->
+      <div class="bw g-hub">
+        <div class="bw-head">
+          <div class="bw-title"><svg class="bw-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg>My Calendar &amp; Timetable</div>
+          <a class="bw-cta" href="v3-calendar.html">Open Calendar →</a>
+        </div>
+
+        <div class="hub-split">
+          <div class="hub-box">
+            <div class="hub-lbl"><svg class="hub-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>Timetable <a class="go" href="v3-calendar.html">See all →</a></div>
+            <div class="day-lbl">Tue 4 Mar <span class="tag">TODAY</span></div>
+            <div class="ev now"><span class="stripe" style="background:#c23636"></span>
+              <div class="body"><div class="t">14:00–16:00</div><div class="n">ATUX Lecture</div></div><span class="live">NOW</span></div>
+            <div class="ev"><span class="stripe" style="background:#a9711a"></span>
+              <div class="body"><div class="t">16:30–18:00</div><div class="n">FP Seminar</div></div></div>
+            <div class="day-lbl" style="margin-top:8px;">Wed 5 Mar <span class="tag tmr">TOMORROW</span></div>
+            <div class="ev"><span class="stripe" style="background:#177a3f"></span>
+              <div class="body"><div class="t">12:00–14:00</div><div class="n">IS Lecture</div></div></div>
+          </div>
+          <div class="hub-box">
+            <div class="hub-lbl"><svg class="hub-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4.5h11l-2 3.5 2 3.5H5z"/></svg>Due This Term <span class="go demo">See all →</span></div>
+            <div class="day-lbl">Upcoming <span class="tag tmr">3 DUE</span></div>
+            <a class="due-row urgent" href="v3-assignment.html" title="Open Assessment &amp; Feedback"><span class="d">12<small>d</small></span>
+              <div class="due-info"><div class="t2">UX Design Award Portfolio</div><div class="when">Fri 14 Aug · 17:00</div></div></a>
+            <a class="due-row" href="v3-assignment.html" title="Open Assessment &amp; Feedback"><span class="d">26<small>d</small></span>
+              <div class="due-info"><div class="t2">Reflective Case Study</div><div class="when">Fri 28 Aug · 14:00</div></div></a>
+            <a class="due-row" href="v3-assignment-is.html" title="Open Assessment &amp; Feedback"><span class="d">41<small>d</small></span>
+              <div class="due-info"><div class="t2">Portfolio Reflection</div><div class="when">Sat 12 Sep · 12:00</div></div></a>
+          </div>
+        </div>
+
+        <div class="hub-box hub-tp">
+          <div class="ring" style="width:64px;height:64px;">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#e3e5ee" stroke-width="6.5"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="url(#dashG)" stroke-width="6.5" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="57.2"/>
+              <defs><linearGradient id="dashG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#3452e1"/></linearGradient></defs>
+            </svg>
+            <div class="mid"><b>65%</b><span>TERM 2</span></div>
+          </div>
+          <div class="tp-mid">
+            <span class="term">Week 4 of 10</span>
+            <div class="wk">1 week left to reading week</div>
+            <div class="sub">13 Mar – 1 Apr 2026</div>
+            <div class="wk-track">
+              <div class="wkc on"><i></i><span>W1</span></div><div class="wkc on"><i></i><span>W2</span></div>
+              <div class="wkc on"><i></i><span>W3</span></div><div class="wkc now"><i></i><span>W4</span></div>
+              <div class="wkc"><i></i><span>W5</span></div><div class="wkc"><i></i><span>W6</span></div>
+              <div class="wkc"><i></i><span>W7</span></div><div class="wkc"><i></i><span>W8</span></div>
+              <div class="wkc"><i></i><span>W9</span></div><div class="wkc"><i></i><span>W10</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MIDDLE · my courses -->
+      <div class="bw g-courses">
+        <div class="bw-head"><div class="bw-title"><svg class="bw-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19v3H6.5A2.5 2.5 0 0 1 4 20.5z"/></svg>My Courses</div><span class="bw-more">···</span></div>
+        <div class="bw-body">
+          <div class="bw-inset">
+          <div class="bw-tabs" data-tabs>
+            <button class="on" data-tab="all">All Courses</button>
+            <button data-tab="aud">Auditing</button>
+            <button data-tab="oth">Others</button>
+          </div>
+          <div class="tabpanel on" data-panel="all">
+            <div class="scroller">
+              <div class="crow" data-href="v3-course.html"><img class="prof-av" src="https://i.pravatar.cc/60?img=47" alt="tutor">
+                <div class="cinfo"><div class="cn">Applied UX Topics</div><div class="cs">Dr Rafael Tahir</div></div>
+                <button class="mail-btn" title="Email tutor">✉️</button></div>
+              <div class="crow" data-href="v3-course-is.html"><img class="prof-av" src="https://i.pravatar.cc/60?img=32" alt="tutor">
+                <div class="cinfo"><div class="cn">Interaction Science</div><div class="cs">Dr Amara Lindqvist</div></div>
+                <button class="mail-btn" title="Email tutor">✉️</button></div>
+              <div class="crow"><img class="prof-av" src="https://i.pravatar.cc/60?img=12" alt="tutor">
+                <div class="cinfo"><div class="cn">Information Architecture</div><div class="cs">Prof Elena Duarte</div></div>
+                <button class="mail-btn" title="Email tutor">✉️</button></div>
+              <div class="crow"><img class="prof-av" src="https://i.pravatar.cc/60?img=5" alt="tutor">
+                <div class="cinfo"><div class="cn">Usability Testing</div><div class="cs">Dr Marcus Fielding</div></div>
+                <button class="mail-btn" title="Email tutor">✉️</button></div>
+              <div class="crow"><img class="prof-av" src="https://i.pravatar.cc/60?img=15" alt="tutor">
+                <div class="cinfo"><div class="cn">Visual Design &amp; Typography</div><div class="cs">Dr Sofia Nakamura</div></div>
+                <button class="mail-btn" title="Email tutor">✉️</button></div>
+            </div>
+          </div>
+          <div class="tabpanel" data-panel="aud">
+            <div class="scroller">
+              <div class="crow"><img class="prof-av" src="https://i.pravatar.cc/60?img=32" alt="tutor">
+                <div class="cinfo"><div class="cn">Digital Humanities</div><div class="cs">Dr Amara Lindqvist</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+              <div class="crow"><img class="prof-av" src="https://i.pravatar.cc/60?img=12" alt="tutor">
+                <div class="cinfo"><div class="cn">Creative Computing</div><div class="cs">Prof Elena Duarte</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+              <div class="crow"><img class="prof-av" src="https://i.pravatar.cc/60?img=8" alt="tutor">
+                <div class="cinfo"><div class="cn">Sound &amp; Interaction</div><div class="cs">Dr Priya Raghavan</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+            </div>
+          </div>
+          <div class="tabpanel" data-panel="oth">
+            <div class="scroller">
+              <div class="crow"><span class="cd2" style="background:linear-gradient(135deg,#fbbf5c,#f5924a)">🏅</span>
+                <div class="cinfo"><div class="cn">Gold Award</div><div class="cs">Careers Service</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+              <div class="crow"><span class="cd2" style="background:linear-gradient(135deg,#6b8cff,#2748c9)">📝</span>
+                <div class="cinfo"><div class="cn">Turnitin</div><div class="cs">Similarity checking</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+              <div class="crow"><span class="cd2" style="background:linear-gradient(135deg,#34d17f,#16a34a)">⚽</span>
+                <div class="cinfo"><div class="cn">Sports Club</div><div class="cs">Badminton · Wed 18:00</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+              <div class="crow"><span class="cd2" style="background:linear-gradient(135deg,#a879ff,#7c3aed)">🎓</span>
+                <div class="cinfo"><div class="cn">Peer Mentoring</div><div class="cs">Student Services</div></div>
+                <button class="mini-btn">Enrol request</button></div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <a class="bw-foot" href="v3-all-courses.html">All courses →</a>
+      </div>
+
+      <!-- RIGHT TOP · score release -->
+      <div class="bw g-score">
+        <div class="bw-head"><div class="bw-title"><svg class="bw-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.85-4.25 4.15 1 5.85L12 16.9l-5.25 2.75 1-5.85L3.5 9.65l5.9-.85z"/></svg>Score Release</div><span class="newtag">2 NEW</span></div>
+        <div class="bw-body">
+          <div class="bw-inset">
+          <div class="sc-lbl">Latest results <span class="sc-count">Term 2</span></div>
+          <div class="sc-row"><div class="sc-info"><div class="sn">Secondary Research</div><div class="sm">ATUX · 1 Aug</div></div><span class="grade a">78</span></div>
+          <div class="sc-row"><div class="sc-info"><div class="sn">Studio Midterm</div><div class="sm">IS · 29 Jul</div></div><span class="grade b">65</span></div>
+          <div class="sc-row"><div class="sc-info"><div class="sn">Stakeholder Mapping</div><div class="sm">ATUX · marking</div></div><span class="grade pend">Pending</span></div>
+          </div>
+        </div>
+        <a class="bw-foot" href="v3-achievement.html">See more learning analytics →</a>
+      </div>
+
+      <!-- RIGHT BOTTOM · add widget -->
+      <div class="add-cell g-add">
+        <button class="add-w" id="addWidgetBtn">
+          <span class="plus">+</span>
+          <span class="lbl">Add more widget</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Course overview -->
+  <section class="card section">
+    <div class="section-head">
+      <h2>Course overview</h2>
+    </div>
+    <form id="courseFilter" class="filter-bar" style="margin-bottom:16px;" onsubmit="return false;">
+      <div class="search-box">🔍 <input type="search" placeholder="Search course name..."></div>
+      <select class="filter-select" data-filter="teacher">
+        <option value="">Teacher: All</option>
+        <option value="donate">Julia Donate</option>
+        <option value="oladimeji">Olumide Oladimeji</option>
+        <option value="olatunde">Adeyemi Olatunde</option>
+        <option value="debaig">Clemence Debaig</option>
+      </select>
+      <select class="filter-select" data-filter="year">
+        <option value="">Year: All</option>
+        <option value="1">Year 1</option>
+        <option value="2">Year 2</option>
+        <option value="3">Year 3</option>
+      </select>
+    </form>
+
+    <div class="course-grid" id="courseGrid">
+      <div class="course-card" data-name="applied ux topics" data-teacher="olatunde" data-year="3" data-href="v3-course.html">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/applieduxguest/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">IS71093C: APPLIED UX TOPICS</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:50%"></span></div><span class="pct">50%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="interaction science" data-teacher="donate" data-year="2" data-href="v3-course-is.html">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course1/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">IS71092D: INTERACTION SCIENCE</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:65%"></span></div><span class="pct">65%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="information architecture" data-teacher="oladimeji" data-year="2">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course2/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">IA20200: INFORMATION ARCHITECTURE</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:60%"></span></div><span class="pct">60%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="interaction design fundamentals" data-teacher="debaig" data-year="1">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course3/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">ID10101: INTERACTION DESIGN FUNDAMENTALS</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:30%"></span></div><span class="pct">30%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="usability testing and evaluation" data-teacher="donate" data-year="2">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course4/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">UT30300: USABILITY TESTING &amp; EVALUATION</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:70%"></span></div><span class="pct">70%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="visual design and typography" data-teacher="oladimeji" data-year="1">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course5/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">VD40200: VISUAL DESIGN &amp; TYPOGRAPHY</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:45%"></span></div><span class="pct">45%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="human-computer interaction" data-teacher="olatunde" data-year="3">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course6/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">HCI50100: HUMAN-COMPUTER INTERACTION</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:90%"></span></div><span class="pct">90%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="design systems and component libraries" data-teacher="debaig" data-year="2">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course7/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">DS60200: DESIGN SYSTEMS &amp; COMPONENT LIBRARIES</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:20%"></span></div><span class="pct">20%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="service design and journey mapping" data-teacher="donate" data-year="3">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course8/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">SD70300: SERVICE DESIGN &amp; JOURNEY MAPPING</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:55%"></span></div><span class="pct">55%</span></div>
+        </div>
+      </div>
+      <div class="course-card" data-name="user research methods" data-teacher="oladimeji" data-year="1">
+        <div class="course-cover" style="background-image:url('https://picsum.photos/seed/course9/400/220')"><span class="tag">Postgraduate</span></div>
+        <div class="course-body">
+          <div class="course-title">UR20400: USER RESEARCH METHODS</div>
+          <div class="course-progress"><div class="progress-bar"><span style="width:38%"></span></div><span class="pct">38%</span></div>
+        </div>
+      </div>
+
+      <div class="all-courses-card" data-browse-href="v3-all-courses.html" title="點擊卡片外圍前往選課頁面 / Click outside the + to browse all courses">
+        <div class="plus" title="點擊「+」把這門課加到 Dashboard">+</div>
+        <span>All Courses Area</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- University News & Campus Life -->
+  <section class="card section">
+    <div class="section-head">
+      <h2>University News & Campus Life</h2>
+      <a class="link-more" href="https://www.gold.ac.uk/events/?collection=goldsmiths~sp-events&query=&f.Department|FUNbyoyfhgdwc5f9zv2ok2dxjkxx=Media%2C+Communications+and+Cultural+Studies&datepicker=" target="_blank" rel="noopener">See more →</a>
+    </div>
+    <div class="event-strip">
+      <div class="event-date"><div class="num">7</div><div class="day">Sunday</div></div>
+      <div class="event-cards">
+        <a class="event-card" href="https://www.gold.ac.uk/events/?collection=goldsmiths~sp-events&query=&f.Department|FUNbyoyfhgdwc5f9zv2ok2dxjkxx=Media%2C+Communications+and+Cultural+Studies&datepicker=" target="_blank" rel="noopener">
+          <div class="thumb" style="background-image:url('https://picsum.photos/seed/newsevent1/300/180')"></div>
+          <div class="info">
+            <div class="title">Media, Communications & Cultural Studies Symposium</div>
+            <div class="meta">🎓 Campus Event · 07 Jul, 10:00am</div>
+          </div>
+        </a>
+        <a class="event-card" href="https://www.gold.ac.uk/events/?collection=goldsmiths~sp-events&query=&f.Department|FUNbyoyfhgdwc5f9zv2ok2dxjkxx=Media%2C+Communications+and+Cultural+Studies&datepicker=" target="_blank" rel="noopener">
+          <div class="thumb" style="background-image:url('https://picsum.photos/seed/newsevent2/300/180')"></div>
+          <div class="info">
+            <div class="title">Autumn Open Day: Campus Tours & Talks</div>
+            <div class="meta">🏫 Campus Event · 07 Jun, 12:00pm</div>
+          </div>
+        </a>
+        <a class="event-card" href="https://www.gold.ac.uk/events/?collection=goldsmiths~sp-events&query=&f.Department|FUNbyoyfhgdwc5f9zv2ok2dxjkxx=Media%2C+Communications+and+Cultural+Studies&datepicker=" target="_blank" rel="noopener">
+          <div class="thumb" style="background-image:url('https://picsum.photos/seed/newsevent3/300/180')"></div>
+          <div class="info">
+            <div class="title">Student Societies Fair — Register Your Club</div>
+            <div class="meta">🎉 Club Registration · 07 Jul, 12:00pm</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="card section">
+    <div class="section-head"><h2>Quick Links</h2></div>
+    <div class="quick-grid">
+      <div class="quick-col">
+        <h4>Support & Services</h4>
+        <ul>
+          <li><a href="https://www.gold.ac.uk/students/academic-skills-centre/" target="_blank" rel="noopener">Academic Support</a></li>
+          <li><a href="https://www.gold.ac.uk/students/wellbeing/mental-health/" target="_blank" rel="noopener">Mental Health</a></li>
+          <li><a href="https://www.gold.ac.uk/library/" target="_blank" rel="noopener">Library</a></li>
+          <li><a href="https://www.gold.ac.uk/it/" target="_blank" rel="noopener">IT Assistance</a></li>
+          <li><a href="https://www.gold.ac.uk/students/accessibility/" target="_blank" rel="noopener">Accessibility</a></li>
+          <li><a href="https://www.gold.ac.uk/students/wellbeing/" target="_blank" rel="noopener">Well Being</a></li>
+        </ul>
+      </div>
+      <div class="quick-col">
+        <h4>My Courses</h4>
+        <ul>
+          <li><a href="v3-all-courses.html">Past Courses & Learning Materials</a></li>
+          <li><a href="v3-all-courses.html">Enrolled Courses</a></li>
+          <li><a href="v3-all-courses.html">Auditing Courses</a></li>
+        </ul>
+      </div>
+      <div class="quick-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Preference</a></li>
+        </ul>
+      </div>
+      <div class="quick-col">
+        <h4>External Link</h4>
+        <ul>
+          <li><a href="https://teams.microsoft.com/" target="_blank" rel="noopener">Teams</a></li>
+          <li><a href="https://outlook.office.com/" target="_blank" rel="noopener">Outlook</a></li>
+          <li><a href="https://my.gold.ac.uk/" target="_blank" rel="noopener">My Goldsmiths</a></li>
+          <li><a href="https://www.gold.ac.uk/students/seats/" target="_blank" rel="noopener">SEAtS</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Dashboard</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

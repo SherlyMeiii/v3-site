@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="hero-banner" style="background-image:url('https://picsum.photos/seed/applieduxguest/1200/400')">
+    <div class="instructor"><img src="https://i.pravatar.cc/80?img=47" alt="Course lead"></div>
+    <div class="hero-text">
+      <h1>IS71093C: APPLIED UX TOPICS AND GUEST LECTURES (2025-26)</h1>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="v3-course.html" class="active">Course</a>
+    <a href="v3-assignment.html">Assessment</a>
+    <a href="v3-reading-list.html">Reading List</a>
+    <a href="v3-participant.html">Participant</a>
+    <a href="v3-instructor.html">Instructor</a>
+    <div class="tab-add">
+      <button class="tab-add-btn" title="Add a section to this course" aria-haspopup="true">+</button>
+      <div class="tab-add-panel">
+        <div class="tab-add-head">Add section</div>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="quiz"><span>Quiz</span></label>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="resources"><span>Resources</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="assign-layout">
+
+    <!-- Left-hand Table of Contents tracker: position:sticky only, no internal scrollbar of its own —
+         so scrolling with the cursor over the sidebar scrolls the whole page, and scrolling over the
+         course details on the right leaves the sidebar sitting still. -->
+    <aside class="toc-sidebar">
+      <div class="search-box toc-search">🔍<input type="search" id="tocSearch" placeholder="Search topics..."></div>
+      <div class="toc-tools">
+        <button class="toc-tool" id="bookmarksBtn">🔖 Bookmarks <span id="bmCount"></span></button>
+        <div class="bookmarks-panel" id="bookmarksPanel">
+          <div class="bookmarks-panel-head">我的收藏 My Bookmarks</div>
+          <div id="bookmarksList"></div>
+        </div>
+        <a class="toc-tool" href="v3-calendar.html" style="display:block;text-decoration:none;">📅 Course Calendar</a>
+      </div>
+
+      <div class="toc-progress">
+        <div class="toc-progress-top">
+          <span class="toc-progress-pct" id="tocPct">0%</span>
+          <span class="toc-progress-label" id="tocLabel">0 of 23 topics complete</span>
+        </div>
+        <div class="progress-bar"><span id="tocBar" style="width:0%"></span></div>
+        <div class="toc-expand-links">
+          <a href="#" id="tocExpandAll">Expand all</a> · <a href="#" id="tocCollapseAll">Collapse all</a>
+        </div>
+      </div>
+
+      <div class="toc-head">Table of Contents <span class="toc-count">50</span></div>
+      <nav class="toc-tree" id="tocTree">
+        <a class="toc-top-link" href="#moduleinfo">Module Information</a>
+        <div class="toc-week" data-week="week13">
+          <div class="toc-week-head" data-target="#week13"><span class="chev">⌄</span><span class="toc-week-title">Week 13</span><span class="toc-badge">3</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week13-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week13-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week13-recap">Recap &amp; Catch-up</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week12">
+          <div class="toc-week-head" data-target="#week12"><span class="chev">⌄</span><span class="toc-week-title">Week 12</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week12-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week12-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week12-recap">Recap &amp; Catch-up</a>
+            <a class="toc-sub" href="#week12-homework">Homework: Stakeholder Pitch Deck</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week11">
+          <div class="toc-week-head" data-target="#week11"><span class="chev">⌄</span><span class="toc-week-title">Week 11</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week11-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week11-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week11-reading">Reading List</a>
+            <a class="toc-sub" href="#week11-homework">Homework: Design System Audit</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week10">
+          <div class="toc-week-head" data-target="#week10"><span class="chev">⌄</span><span class="toc-week-title">Week 10</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week10-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week10-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week10-recap">Recap &amp; Catch-up</a>
+            <a class="toc-sub" href="#week10-homework">Homework: Industry Case Analysis</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week9">
+          <div class="toc-week-head" data-target="#week9"><span class="chev">⌄</span><span class="toc-week-title">Week 9</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week9-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week9-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week9-reading">Reading List</a>
+            <a class="toc-sub" href="#week9-homework">Homework: Accessibility Audit Checklist</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week8">
+          <div class="toc-week-head" data-target="#week8"><span class="chev">⌄</span><span class="toc-week-title">Week 8</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week8-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week8-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week8-recap">Recap &amp; Catch-up</a>
+            <a class="toc-sub" href="#week8-homework">Homework: Evaluation Report Draft</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week7">
+          <div class="toc-week-head" data-target="#week7"><span class="chev">⌄</span><span class="toc-week-title">Week 7</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week7-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week7-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week7-reading">Reading List</a>
+            <a class="toc-sub" href="#week7-homework">Homework: Usability Test Execution Log</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week6">
+          <div class="toc-week-head" data-target="#week6"><span class="chev">⌄</span><span class="toc-week-title">Week 6</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week6-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week6-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week6-recap">Recap &amp; Catch-up</a>
+            <a class="toc-sub" href="#week6-homework">Homework: Portfolio Draft</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week5">
+          <div class="toc-week-head" data-target="#week5"><span class="chev">⌄</span><span class="toc-week-title">Week 5</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week5-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week5-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week5-reading">Reading List</a>
+            <a class="toc-sub" href="#week5-homework">Homework: Prototype Testing Plan</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week4">
+          <div class="toc-week-head" data-target="#week4"><span class="chev">⌄</span><span class="toc-week-title">Week 4</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week4-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week4-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week4-recap">Recap &amp; Catch-up</a>
+            <a class="toc-sub" href="#week4-homework">Homework: Value Proposition Canvas</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week3">
+          <div class="toc-week-head" data-target="#week3"><span class="chev">⌄</span><span class="toc-week-title">Week 3</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week3-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week3-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week3-reading">Reading List</a>
+            <a class="toc-sub" href="#week3-homework">Homework: Stakeholder Mapping</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week2">
+          <div class="toc-week-head" data-target="#week2"><span class="chev">⌄</span><span class="toc-week-title">Week 2</span><span class="toc-badge">4</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week2-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week2-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week2-recap">Recap &amp; Catch-up</a>
+            <a class="toc-sub" href="#week2-homework">Homework: Secondary Research</a>
+          </div>
+        </div>
+        <div class="toc-week collapsed" data-week="week1">
+          <div class="toc-week-head" data-target="#week1"><span class="chev">⌄</span><span class="toc-week-title">Week 1</span><span class="toc-badge">3</span></div>
+          <div class="toc-week-body">
+            <a class="toc-sub" href="#week1-slides">Introduction Slides</a>
+            <a class="toc-sub" href="#week1-talk">Guest Talk Slides</a>
+            <a class="toc-sub" href="#week1-recap">Recap &amp; Catch-up</a>
+          </div>
+        </div>
+
+      </nav>
+    </aside>
+
+    <div class="toc-pointer" id="tocPointer" aria-hidden="true"></div>
+
+    <div class="assign-main">
+
+      <div class="card section" id="moduleinfo">
+        <h3 style="margin:0 0 12px;font-size:16px;">📘 Module Information</h3>
+        <div class="module-info-grid">
+          <div><span class="mi-label">Module Code</span><span class="mi-value">IS71093C</span></div>
+          <div><span class="mi-label">Module Title</span><span class="mi-value">Applied UX Topics</span></div>
+          <div><span class="mi-label">Credits</span><span class="mi-value">15 credits</span></div>
+          <div><span class="mi-label">Level</span><span class="mi-value">Postgraduate</span></div>
+          <div><span class="mi-label">Module Convenor</span><span class="mi-value">Julia Donate</span></div>
+          <div><span class="mi-label">Term</span><span class="mi-value">Term 2</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-size:13px;color:var(--ink-soft);">This module explores applied UX research and design methods through weekly guest talks, seminars, and a portfolio-based assessment.</p>
+      </div>
+
+      <div class="section-head" style="margin-bottom:12px;">
+        <h2 style="font-size:18px;">Weekly Materials</h2>
+        <div class="actions">
+          <!-- comment #14: 要有 download all / 最後可以全部下載課件 -->
+          <button class="download-all-btn" id="downloadAllBtn">⬇ Download all materials</button>
+          <button class="collapse-all-btn" id="collapseAllBtn">Collapse all</button>
+        </div>
+      </div>
+
+      <div class="week-block card" id="week13">
+        <div class="week-head">
+          <h3>Week 13: Portfolio Showcase &amp; Module Wrap-up</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>Our final session is a showcase of your UX Design Award portfolios, followed by a module wrap-up and Q&amp;A ahead of the Reflective Case Study Report deadline (28 Aug 2026).</p>
+          <div class="material-row" id="week13-slides">
+            <a class="material-item" href="v3-preview.html?id=week13-slides&title=Week%2013%3A%20Introduction%20Slides&type=slide&week=week13"><span class="m-icon slide">📑</span><span class="m-title">Week 13: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week13-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week13-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week13-talk">
+            <a class="material-item" href="v3-preview.html?id=week13-talk&title=Week%2013%3A%20Guest%20Talk%20Slides&type=talk&week=week13"><span class="m-icon talk">🎤</span><span class="m-title">Week 13: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week13-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week13-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week13-recap">
+            <a class="material-item" href="v3-preview.html?id=week13-recap&title=Week%2013%3A%20Recap%20%26%20Catch-up&type=recap&week=week13"><span class="m-icon recap">🔁</span><span class="m-title">Week 13: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week13-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week13-recap" title="收藏 Bookmark">☆</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week12">
+        <div class="week-head">
+          <h3>Week 12: Storytelling &amp; Stakeholder Communication by Kenji Watanabe</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on storytelling and communicating design decisions to stakeholders. The seminar focuses on preparing a compelling pitch for your portfolio showcase.</p>
+          <div class="material-row" id="week12-slides">
+            <a class="material-item" href="v3-preview.html?id=week12-slides&title=Week%2012%3A%20Introduction%20Slides&type=slide&week=week12"><span class="m-icon slide">📑</span><span class="m-title">Week 12: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week12-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week12-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week12-talk">
+            <a class="material-item" href="v3-preview.html?id=week12-talk&title=Week%2012%3A%20Guest%20Talk%20Slides&type=talk&week=week12"><span class="m-icon talk">🎤</span><span class="m-title">Week 12: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week12-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week12-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week12-recap">
+            <a class="material-item" href="v3-preview.html?id=week12-recap&title=Week%2012%3A%20Recap%20%26%20Catch-up&type=recap&week=week12"><span class="m-icon recap">🔁</span><span class="m-title">Week 12: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week12-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week12-recap" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week12-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 12: Homework – Stakeholder Pitch Deck</span></div>
+              <button class="status-btn state-unread" data-complete-id="week12-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week12-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Prepare a short pitch deck presenting your portfolio to a stakeholder audience.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week11">
+        <div class="week-head">
+          <h3>Week 11: Design Systems &amp; Component Libraries by Saoirse Byrne</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on design systems and component libraries, and how consistent UI patterns speed up delivery. The seminar reviews how to document your own portfolio's design system.</p>
+          <div class="material-row" id="week11-slides">
+            <a class="material-item" href="v3-preview.html?id=week11-slides&title=Week%2011%3A%20Introduction%20Slides&type=slide&week=week11"><span class="m-icon slide">📑</span><span class="m-title">Week 11: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week11-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week11-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week11-talk">
+            <a class="material-item" href="v3-preview.html?id=week11-talk&title=Week%2011%3A%20Guest%20Talk%20Slides&type=talk&week=week11"><span class="m-icon talk">🎤</span><span class="m-title">Week 11: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week11-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week11-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week11-reading">
+            <a class="material-item" href="v3-preview.html?id=week11-reading&title=Week%2011%3A%20Reading%20List&type=reading&week=week11"><span class="m-icon reading">📚</span><span class="m-title">Week 11: Reading List</span></a>
+            <button class="status-btn state-unread" data-complete-id="week11-reading" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week11-reading" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week11-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 11: Homework – Design System Audit</span></div>
+              <button class="status-btn state-unread" data-complete-id="week11-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week11-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Audit an existing product's design system and note three inconsistencies.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week10">
+        <div class="week-head">
+          <h3>Week 10: UX in Industry — Case Studies from Practice by Diego Fernandez</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on applying UX methods in industry settings, drawing on real project case studies. The seminar reviews how to translate coursework experience into professional practice.</p>
+          <div class="material-row" id="week10-slides">
+            <a class="material-item" href="v3-preview.html?id=week10-slides&title=Week%2010%3A%20Introduction%20Slides&type=slide&week=week10"><span class="m-icon slide">📑</span><span class="m-title">Week 10: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week10-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week10-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week10-talk">
+            <a class="material-item" href="v3-preview.html?id=week10-talk&title=Week%2010%3A%20Guest%20Talk%20Slides&type=talk&week=week10"><span class="m-icon talk">🎤</span><span class="m-title">Week 10: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week10-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week10-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week10-recap">
+            <a class="material-item" href="v3-preview.html?id=week10-recap&title=Week%2010%3A%20Recap%20%26%20Catch-up&type=recap&week=week10"><span class="m-icon recap">🔁</span><span class="m-title">Week 10: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week10-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week10-recap" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week10-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 10: Homework – Industry Case Analysis</span></div>
+              <button class="status-btn state-unread" data-complete-id="week10-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week10-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Summarise one industry case study and relate it to your own portfolio project.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week9">
+        <div class="week-head">
+          <h3>Week 9: Accessibility &amp; Inclusive Design by Naledi Khumalo</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on accessibility and inclusive design practices. The seminar covers WCAG basics and running an accessibility pass on your own prototype.</p>
+          <div class="material-row" id="week9-slides">
+            <a class="material-item" href="v3-preview.html?id=week9-slides&title=Week%209%3A%20Introduction%20Slides&type=slide&week=week9"><span class="m-icon slide">📑</span><span class="m-title">Week 9: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week9-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week9-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week9-talk">
+            <a class="material-item" href="v3-preview.html?id=week9-talk&title=Week%209%3A%20Guest%20Talk%20Slides&type=talk&week=week9"><span class="m-icon talk">🎤</span><span class="m-title">Week 9: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week9-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week9-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week9-reading">
+            <a class="material-item" href="v3-preview.html?id=week9-reading&title=Week%209%3A%20Reading%20List&type=reading&week=week9"><span class="m-icon reading">📚</span><span class="m-title">Week 9: Reading List</span></a>
+            <button class="status-btn state-unread" data-complete-id="week9-reading" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week9-reading" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week9-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 9: Homework – Accessibility Audit Checklist</span></div>
+              <button class="status-btn state-unread" data-complete-id="week9-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week9-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Run through the WCAG checklist against your prototype and log any issues found.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week8">
+        <div class="week-head">
+          <h3>Week 8: Evaluation Methods &amp; Usability Testing by Tobias Lindqvist</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on evaluation methods, following on from Week 7's usability testing plan. The seminar covers running the test itself and synthesising findings into an evaluation report.</p>
+          <div class="material-row" id="week8-slides">
+            <a class="material-item" href="v3-preview.html?id=week8-slides&title=Week%208%3A%20Introduction%20Slides&type=slide&week=week8"><span class="m-icon slide">📑</span><span class="m-title">Week 8: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week8-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week8-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week8-talk">
+            <a class="material-item" href="v3-preview.html?id=week8-talk&title=Week%208%3A%20Guest%20Talk%20Slides&type=talk&week=week8"><span class="m-icon talk">🎤</span><span class="m-title">Week 8: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week8-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week8-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week8-recap">
+            <a class="material-item" href="v3-preview.html?id=week8-recap&title=Week%208%3A%20Recap%20%26%20Catch-up&type=recap&week=week8"><span class="m-icon recap">🔁</span><span class="m-title">Week 8: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week8-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week8-recap" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week8-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 8: Homework – Evaluation Report Draft</span></div>
+              <button class="status-btn state-unread" data-complete-id="week8-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week8-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Draft a short evaluation report summarising your usability test results.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week7">
+        <div class="week-head">
+          <h3>Week 7: UX for Emerging Technologies by Priya Raman</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on UX for emerging technologies such as AI-assisted and voice interfaces. The seminar reviews your Week 5 usability-testing plan and this milestone's UX Design Award Portfolio deadline (14 Aug 2026).</p>
+          <div class="material-row" id="week7-slides">
+            <a class="material-item" href="v3-preview.html?id=week7-slides&title=Week%207%3A%20Introduction%20Slides&type=slide&week=week7"><span class="m-icon slide">📑</span><span class="m-title">Week 7: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week7-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week7-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week7-talk">
+            <a class="material-item" href="v3-preview.html?id=week7-talk&title=Week%207%3A%20Guest%20Talk%20Slides&type=talk&week=week7"><span class="m-icon talk">🎤</span><span class="m-title">Week 7: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week7-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week7-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week7-reading">
+            <a class="material-item" href="v3-preview.html?id=week7-reading&title=Week%207%3A%20Reading%20List&type=reading&week=week7"><span class="m-icon reading">📚</span><span class="m-title">Week 7: Reading List</span></a>
+            <button class="status-btn state-unread" data-complete-id="week7-reading" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week7-reading" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week7-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 7: Homework – Usability Test Execution Log</span></div>
+              <button class="status-btn state-unread" data-complete-id="week7-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week7-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Run your usability test and log the session notes ahead of next week's evaluation report.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week6">
+        <div class="week-head">
+          <h3>Week 6: Portfolio &amp; Presentation by Ingrid Sørensen</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This final week features a guest talk on presenting UX work to stakeholders and building a portfolio. The seminar wraps up the Deliver phase, with peer feedback on your draft portfolio ahead of the UX Design Award submission.</p>
+          <div class="material-row" id="week6-slides">
+            <a class="material-item" href="v3-preview.html?id=week6-slides&title=Week%206%3A%20Introduction%20Slides&type=slide&week=week6"><span class="m-icon slide">📑</span><span class="m-title">Week 6: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week6-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week6-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week6-talk">
+            <a class="material-item" href="v3-preview.html?id=week6-talk&title=Week%206%3A%20Guest%20Talk%20Slides&type=talk&week=week6"><span class="m-icon talk">🎤</span><span class="m-title">Week 6: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week6-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week6-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week6-recap">
+            <a class="material-item" href="v3-preview.html?id=week6-recap&title=Week%206%3A%20Recap%20%26%20Catch-up&type=recap&week=week6"><span class="m-icon recap">🔁</span><span class="m-title">Week 6: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week6-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week6-recap" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week6-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 6: Homework – Portfolio Draft</span></div>
+              <button class="status-btn state-unread" data-complete-id="week6-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week6-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Bring a draft of your portfolio for peer feedback in our final session.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week5">
+        <div class="week-head">
+          <h3>Week 5: Prototyping &amp; Usability Testing by Marcus Fielding</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on rapid prototyping and usability testing methods. In the seminar, we move into the Develop phase, building low- and mid-fidelity prototypes and planning a usability test protocol for your UX Design Award projects.</p>
+          <div class="material-row" id="week5-slides">
+            <a class="material-item" href="v3-preview.html?id=week5-slides&title=Week%205%3A%20Introduction%20Slides&type=slide&week=week5"><span class="m-icon slide">📑</span><span class="m-title">Week 5: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week5-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week5-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week5-talk">
+            <a class="material-item" href="v3-preview.html?id=week5-talk&title=Week%205%3A%20Guest%20Talk%20Slides&type=talk&week=week5"><span class="m-icon talk">🎤</span><span class="m-title">Week 5: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week5-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week5-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week5-reading">
+            <a class="material-item" href="v3-preview.html?id=week5-reading&title=Week%205%3A%20Reading%20List&type=reading&week=week5"><span class="m-icon reading">📚</span><span class="m-title">Week 5: Reading List</span></a>
+            <button class="status-btn state-unread" data-complete-id="week5-reading" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week5-reading" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week5-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 5: Homework – Prototype Testing Plan</span></div>
+              <button class="status-btn state-unread" data-complete-id="week5-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week5-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Write a short usability-testing plan for your current prototype.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week4">
+        <div class="week-head">
+          <h3>Week 4: UX of Immersive &amp; Digital Performances by Clemence Debaig</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on the UX of immersive and digital performances, exploring interactions, user journeys, and the role of emerging technologies in shaping engaging experiences. In the seminar, we move further into the Define phase, using hands-on group activities such as How Might We (HMW) statements, journey mapping, and the Value Proposition Canvas to clarify user value and to translate research insights into clear opportunity areas and design directions for your UX Design Award projects.</p>
+          <div class="material-row" id="week4-slides">
+            <a class="material-item" href="v3-preview.html?id=week4-slides&title=Week%204%3A%20Introduction%20Slides&type=slide&week=week4"><span class="m-icon slide">📑</span><span class="m-title">Week 4: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week4-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week4-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week4-talk">
+            <a class="material-item" href="v3-preview.html?id=week4-talk&title=Week%204%3A%20Guest%20Talk%20Slides&type=talk&week=week4"><span class="m-icon talk">🎤</span><span class="m-title">Week 4: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week4-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week4-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week4-recap">
+            <a class="material-item" href="v3-preview.html?id=week4-recap&title=Week%204%3A%20Recap%20%26%20Catch-up&type=recap&week=week4"><span class="m-icon recap">🔁</span><span class="m-title">Week 4: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week4-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week4-recap" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week4-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 4: Homework – Value Proposition Canvas</span></div>
+              <button class="status-btn state-unread" data-complete-id="week4-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week4-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Draft your Value Proposition Canvas before the next seminar so we can review it together.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week3">
+        <div class="week-head">
+          <h3>Week 3: Building Experience by Adeyemi Olatunde</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on building experience, focusing on the relationship between people, place, and technology. In the seminar, we enter the Define phase and focus on identifying users, challenges, and problem framing through hands-on group activities, including stakeholder mapping, personas, and a problem framing canvas for your UX Design Award projects.</p>
+          <div class="material-row" id="week3-slides">
+            <a class="material-item" href="v3-preview.html?id=week3-slides&title=Week%203%3A%20Introduction%20Slides&type=slide&week=week3"><span class="m-icon slide">📑</span><span class="m-title">Week 3: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week3-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week3-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week3-talk">
+            <a class="material-item" href="v3-preview.html?id=week3-talk&title=Week%203%3A%20Guest%20Talk%20Slides&type=talk&week=week3"><span class="m-icon talk">🎤</span><span class="m-title">Week 3: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week3-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week3-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week3-reading">
+            <a class="material-item" href="v3-preview.html?id=week3-reading&title=Week%203%3A%20Reading%20List&type=reading&week=week3"><span class="m-icon reading">📚</span><span class="m-title">Week 3: Reading List</span></a>
+            <button class="status-btn state-unread" data-complete-id="week3-reading" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week3-reading" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week3-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 3: Homework – Stakeholder Mapping</span></div>
+              <button class="status-btn state-unread" data-complete-id="week3-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week3-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Complete the stakeholder mapping canvas and be ready to share it in Week 4.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week2">
+        <div class="week-head">
+          <h3>Week 2: User Research in Healthcare by Olumide Oladimeji</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week features a guest talk on user research, followed by seminar activities focused on secondary research, competitive analysis, and optional primary user research to explore the problem space.</p>
+          <div class="material-row" id="week2-slides">
+            <a class="material-item" href="v3-preview.html?id=week2-slides&title=Week%202%3A%20Introduction%20Slides&type=slide&week=week2"><span class="m-icon slide">📑</span><span class="m-title">Week 2: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week2-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week2-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week2-talk">
+            <a class="material-item" href="v3-preview.html?id=week2-talk&title=Week%202%3A%20Guest%20Talk%20Slides&type=talk&week=week2"><span class="m-icon talk">🎤</span><span class="m-title">Week 2: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week2-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week2-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week2-recap">
+            <a class="material-item" href="v3-preview.html?id=week2-recap&title=Week%202%3A%20Recap%20%26%20Catch-up&type=recap&week=week2"><span class="m-icon recap">🔁</span><span class="m-title">Week 2: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week2-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week2-recap" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row sub-section collapsed" id="week2-homework">
+            <div class="sub-section-head">
+              <div class="material-item"><span class="m-icon homework">📝</span><span class="m-title">Week 2: Homework – Secondary Research</span></div>
+              <button class="status-btn state-unread" data-complete-id="week2-homework" aria-haspopup="true">Unread</button>
+                <button class="bm-btn" data-bm-id="week2-homework" title="收藏 Bookmark">☆</button>
+                <span class="chev sub-chev">⌄</span>
+            </div>
+            <div class="sub-section-body"><p>Your homework following this session is included below. Work through the secondary research task and bring three key findings to the next seminar.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block card collapsed" id="week1">
+        <div class="week-head">
+          <h3>Week 1: Introduction to Applied UX and Guest Talk by Julia Donate</h3>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="week-body">
+          <p>This week provides an overview of the module structure and objectives, and includes a guest talk by the product manager from the UX Design Awards.</p>
+          <div class="material-row" id="week1-slides">
+            <a class="material-item" href="v3-preview.html?id=week1-slides&title=Week%201%3A%20Introduction%20Slides&type=slide&week=week1"><span class="m-icon slide">📑</span><span class="m-title">Week 1: Introduction Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week1-slides" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week1-slides" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week1-talk">
+            <a class="material-item" href="v3-preview.html?id=week1-talk&title=Week%201%3A%20Guest%20Talk%20Slides&type=talk&week=week1"><span class="m-icon talk">🎤</span><span class="m-title">Week 1: Guest Talk Slides</span></a>
+            <button class="status-btn state-unread" data-complete-id="week1-talk" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week1-talk" title="收藏 Bookmark">☆</button>
+          </div>
+          <div class="material-row" id="week1-recap">
+            <a class="material-item" href="v3-preview.html?id=week1-recap&title=Week%201%3A%20Recap%20%26%20Catch-up&type=recap&week=week1"><span class="m-icon recap">🔁</span><span class="m-title">Week 1: Recap &amp; Catch-up</span></a>
+            <button class="status-btn state-unread" data-complete-id="week1-recap" aria-haspopup="true">Unread</button>
+            <button class="bm-btn" data-bm-id="week1-recap" title="收藏 Bookmark">☆</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- comment #15: 這些課件要可以真的點按進去 → each .material-item above links to a real
+     standalone page (v3-preview.html?id=...&title=...&type=...&week=...) that simulates
+     opening the ppt/word/pdf file, with its own Download + Bookmark buttons. -->
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Course Page</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

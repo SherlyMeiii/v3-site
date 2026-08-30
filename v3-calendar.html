@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar & Timetable · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <a href="v3-dashboard.html" class="back-link">← Back to Dashboard</a>
+
+  <div class="achv-head">
+    <div>
+      <div class="eyebrow">Academic Schedule · Summer 2026</div>
+      <h1>Calendar &amp; Timetable</h1>
+      <p>All your classes, deadlines and exams in one place.</p>
+    </div>
+    <div class="actions">
+      <button class="ghost">🗓 Month View</button>
+      <button class="primary" id="addEventBtn">+ Add Event</button>
+    </div>
+  </div>
+
+  <div class="cal-layout">
+
+    <div>
+      <div class="cal-filter-card">
+        <div class="cal-filter-group">
+          <h5>Categories</h5>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-filter="deadline"> Deadlines <span class="dot" style="background:var(--red)"></span></label>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-filter="courses"> Courses <span class="dot" style="background:var(--blue)"></span></label>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-filter="event"> School Events <span class="dot" style="background:var(--green)"></span></label>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-filter="exam"> Exams <span class="dot" style="background:var(--orange)"></span></label>
+        </div>
+        <div class="cal-filter-group">
+          <h5>Courses</h5>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-course="calc"> Applied UX <span class="dot" style="background:#7c6ff0"></span></label>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-course="ds"> Interaction Science <span class="dot" style="background:#e0559b"></span></label>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-course="thermo"> Thermodynamics <span class="dot" style="background:#3ba3d0"></span></label>
+          <label class="cal-filter-item"><input type="checkbox" checked data-cal-course="linalg"> Linear Algebra <span class="dot" style="background:#9b6bd6"></span></label>
+        </div>
+        <div class="cal-filter-group">
+          <h5>This Month</h5>
+          <div class="cal-stat-line"><span>Deadlines</span><b>6</b></div>
+          <div class="cal-stat-line"><span>Classes</span><b>20</b></div>
+          <div class="cal-stat-line"><span>Events</span><b>5</b></div>
+          <div class="cal-stat-line"><span>Exams</span><b>4</b></div>
+          <div class="cal-stat-line"><span>Reading week</span><b>16–22 Aug</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-main">
+      <div class="cal-main-head">
+        <div class="cal-nav">
+          <button class="cal-nav-btn">‹</button>
+          <span class="cal-month-title">August 2026</span>
+          <button class="cal-nav-btn">›</button>
+        </div>
+        <div class="view-btns">
+          <button class="active">Month</button>
+          <button>Week</button>
+          <button>Day</button>
+        </div>
+      </div>
+      <div class="cal-grid7">
+        <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+        <div class="cal-day-box dim"><span class="dnum">26</span></div>
+        <div class="cal-day-box dim"><span class="dnum">27</span></div>
+        <div class="cal-day-box dim"><span class="dnum">28</span></div>
+        <div class="cal-day-box dim"><span class="dnum">29</span></div>
+        <div class="cal-day-box dim"><span class="dnum">30</span></div>
+        <div class="cal-day-box dim"><span class="dnum">31</span></div>
+        <div class="cal-day-box"><span class="dnum">1</span></div>
+
+        <div class="cal-day-box"><span class="dnum">2</span><span class="cal-chip calc">Applied UX</span><span class="cal-chip ds">Interaction Science</span></div>
+        <div class="cal-day-box"><span class="dnum">3</span><span class="cal-chip thermo">Thermo Lab</span></div>
+        <div class="cal-day-box"><span class="dnum">4</span><span class="cal-chip deadline" data-course="linalg" data-date="Tue 4 Aug 2026" data-due="23:59" data-code="MA30100" data-module="Linear Algebra" data-assessment="v3-assignment.html">HW 3 Due</span><span class="cal-chip linalg">Linear Algebra</span></div>
+        <div class="cal-day-box"><span class="dnum">5</span></div>
+        <div class="cal-day-box"><span class="dnum">6</span></div>
+        <div class="cal-day-box"><span class="dnum">7</span><span class="cal-chip calc">Applied UX</span><span class="cal-chip event">Campus Open Day</span></div>
+        <div class="cal-day-box"><span class="dnum">8</span><span class="cal-chip ds">Interaction Science</span><span class="cal-chip deadline" data-course="ds" data-date="Sat 8 Aug 2026" data-due="17:00" data-code="IS71092D" data-module="Interaction Science: Advanced Topics" data-assessment="v3-assignment-is.html">Wizard-of-Oz Study Report Due</span></div>
+
+        <div class="cal-day-box"><span class="dnum">9</span><span class="cal-chip calc">Applied UX</span><span class="cal-chip exam" data-course="thermo">Thermo Midterm</span></div>
+        <div class="cal-day-box"><span class="dnum">10</span><span class="cal-chip linalg">Linear Algebra</span><span class="cal-chip event">Study Group</span></div>
+        <div class="cal-day-box"><span class="dnum">11</span><span class="cal-chip ds">Interaction Science</span><span class="cal-chip exam" data-course="ds">Quiz #4</span></div>
+        <div class="cal-day-box"><span class="dnum">12</span></div>
+        <div class="cal-day-box"><span class="dnum">13</span></div>
+        <div class="cal-day-box"><span class="dnum">14</span><span class="cal-chip calc">Applied UX</span><span class="cal-chip deadline" data-course="calc" data-date="Fri 14 Aug 2026" data-due="17:00" data-code="IS71093C" data-module="Applied UX Topics and Guest Lectures" data-assessment="v3-assignment.html">UX Design Award Portfolio Due</span></div>
+        <div class="cal-day-box"><span class="dnum">15</span><span class="cal-chip deadline" data-course="thermo" data-date="Sat 15 Aug 2026" data-due="12:00" data-code="TH20400" data-module="Thermodynamics" data-assessment="v3-assignment.html">Lab Report Due</span><span class="cal-chip thermo">Thermo Lab</span></div>
+
+        <div class="cal-day-box reading-week"><span class="dnum">16</span><span class="cal-chip event reading">Reading Week</span></div>
+        <div class="cal-day-box reading-week"><span class="dnum">17</span><span class="cal-chip event">Career Fair</span><span class="cal-chip event reading">Reading Week</span></div>
+        <div class="cal-day-box reading-week"><span class="dnum">18</span><span class="cal-chip event reading">Reading Week</span></div>
+        <div class="cal-day-box reading-week"><span class="dnum">19</span><span class="cal-chip event reading">Reading Week</span></div>
+        <div class="cal-day-box reading-week"><span class="dnum">20</span><span class="cal-chip event reading">Reading Week</span></div>
+        <div class="cal-day-box reading-week"><span class="dnum">21</span><span class="cal-chip event reading">Reading Week</span></div>
+        <div class="cal-day-box reading-week"><span class="dnum">22</span><span class="cal-chip exam" data-course="calc">Applied UX Final Exam</span><span class="cal-chip event reading">Reading Week</span></div>
+
+        <div class="cal-day-box"><span class="dnum">23</span><span class="cal-chip thermo">Thermo Lab</span></div>
+        <div class="cal-day-box"><span class="dnum">24</span><span class="cal-chip deadline" data-course="linalg" data-date="Mon 24 Aug 2026" data-due="23:59" data-code="MA30100" data-module="Linear Algebra" data-assessment="v3-assignment.html">HW 5 Due</span></div>
+        <div class="cal-day-box"><span class="dnum">25</span><span class="cal-chip ds">Interaction Science</span></div>
+        <div class="cal-day-box"><span class="dnum">26</span></div>
+        <div class="cal-day-box"><span class="dnum">27</span></div>
+        <div class="cal-day-box"><span class="dnum">28</span><span class="cal-chip calc">Applied UX</span><span class="cal-chip event">Orientation</span><span class="cal-chip deadline" data-course="calc" data-date="Fri 28 Aug 2026" data-due="14:00" data-code="IS71093C" data-module="Applied UX Topics and Guest Lectures" data-assessment="v3-assignment.html">Reflective Case Study Report Due</span></div>
+        <div class="cal-day-box"><span class="dnum">29</span><span class="cal-chip linalg">Linear Algebra</span></div>
+
+        <div class="cal-day-box"><span class="dnum">30</span><span class="cal-chip exam" data-course="ds">Interaction Science Final Exam</span></div>
+        <div class="cal-day-box"><span class="dnum">31</span><span class="cal-chip event">End of Term</span></div>
+        <div class="cal-day-box dim"><span class="dnum">1</span></div>
+        <div class="cal-day-box dim"><span class="dnum">2</span></div>
+        <div class="cal-day-box dim"><span class="dnum">3</span></div>
+        <div class="cal-day-box dim"><span class="dnum">4</span></div>
+        <div class="cal-day-box dim"><span class="dnum">5</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cal-week-card">
+        <h4 style="margin:0 0 2px;font-size:14px;">Timetable</h4>
+        <p style="margin:0 0 12px;font-size:11px;color:var(--ink-soft);">Aug 10 – Aug 14, 2026</p>
+
+        <div class="week-ahead-day">
+          <div class="wd-head"><span class="wd-num">10</span>Monday <span class="wd-date">Aug 10</span></div>
+          <div class="week-ahead-item linalg"><span class="wi-title">📘 Linear Algebra</span><span class="wi-meta">10:00 – 11:00 AM · Linear Algebra</span></div>
+          <div class="week-ahead-item event"><span class="wi-title">👥 Study Group</span><span class="wi-meta">4:00 – 5:30 PM</span></div>
+        </div>
+        <div class="week-ahead-day">
+          <div class="wd-head"><span class="wd-num">11</span>Tuesday <span class="wd-date">Aug 11</span></div>
+          <div class="week-ahead-item ds"><span class="wi-title">📕 Interaction Science</span><span class="wi-meta">11:00 AM – 1:00 PM · Interaction Science</span></div>
+          <div class="week-ahead-item exam" data-course="ds"><span class="wi-title">✏️ Quiz #4</span><span class="wi-meta">9:30 – 10:30 AM · Interaction Science</span></div>
+        </div>
+        <div class="week-ahead-day">
+          <div class="wd-head"><span class="wd-num">12</span>Wednesday <span class="wd-date">Aug 12</span></div>
+        </div>
+        <div class="week-ahead-day">
+          <div class="wd-head"><span class="wd-num">13</span>Thursday <span class="wd-date">Aug 13</span></div>
+        </div>
+        <div class="week-ahead-day">
+          <div class="wd-head"><span class="wd-num">14</span>Friday <span class="wd-date">Aug 14</span></div>
+          <div class="week-ahead-item calc"><span class="wi-title">📘 Applied UX</span><span class="wi-meta">9:00 – 11:00 AM · Applied UX</span></div>
+          <div class="week-ahead-item deadline" data-course="calc"><span class="wi-title">🚩 UX Design Award Portfolio Due</span><span class="wi-meta">5:00 PM · Applied UX</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Deadline detail modal: opened by clicking any deadline chip in the month grid -->
+<div class="modal-overlay" id="ddlModal">
+  <div class="modal-card ddl-modal">
+    <div class="modal-head">
+      <h3 id="ddlTitle">Deadline</h3>
+      <button class="modal-close" data-close-modal="ddlModal" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <span class="ddl-badge" id="ddlCountdown">Due soon</span>
+      <dl class="ddl-facts">
+        <div class="ddl-row"><dt>Date</dt><dd id="ddlDate">—</dd></div>
+        <div class="ddl-row"><dt>Due by</dt><dd id="ddlDue">—</dd></div>
+        <div class="ddl-row"><dt>Module code</dt><dd id="ddlCode">—</dd></div>
+        <div class="ddl-row"><dt>Module</dt><dd id="ddlModule">—</dd></div>
+      </dl>
+      <a class="ddl-cta" id="ddlGo" href="v3-assignment.html">Go to Assessment &amp; Submission ↗</a>
+      <p class="ddl-hint">Opens the module's Assessment &amp; Feedback page, where you can read the brief and upload your submission.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Calendar &amp; Timetable</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>

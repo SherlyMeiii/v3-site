@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Participant · Learn.gold</title>
+<link rel="stylesheet" href="v3-styles.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="brand"><span class="dot">●</span>Learn.gold</div>
+    <div class="nav-links">
+      <a href="v3-dashboard.html">Dashboard</a>
+      <a href="v3-all-courses.html">All Course Area</a>
+      <a href="https://www.gold.ac.uk/library/">Library ▾</a>
+      <a href="https://www.gold.ac.uk/students/vle/">VLE Guide ▾</a>
+      <!-- add-to-nav: pick extra shortcuts to pin into the navigation bar -->
+      <div class="nav-add">
+        <button class="nav-add-btn" id="navAddBtn" title="Add a shortcut to the navigation bar" aria-haspopup="true">+</button>
+        <div class="nav-add-panel" id="navAddPanel">
+          <div class="nav-add-head">Add to navigation</div>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="analytics" data-nav-href="v3-achievement.html">
+            <span>Learning Analytics</span>
+          </label>
+          <label class="nav-add-item">
+            <input type="checkbox" data-nav-add="calendar" data-nav-href="v3-calendar.html">
+            <span>Calendar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="brand-icons">
+      <button class="brand-icon-btn" title="my goldsmiths"><img src="assets/icon-goldsmiths.png" alt="My Goldsmiths"></button>
+      <button class="brand-icon-btn" title="Outlook"><img src="assets/icon-outlook.jpeg" alt="Outlook"></button>
+      <button class="brand-icon-btn" title="Microsoft Teams"><img src="assets/icon-teams.jpeg" alt="Microsoft Teams"></button>
+    </div>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">3</span></button>
+    <div class="user-menu">
+      <button class="user-menu-trigger" id="userMenuBtn" aria-haspopup="true">
+        <div class="avatar" title="雪莉美 Sherly">SH</div>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="user-menu-panel" id="userMenuPanel">
+        <a href="#" class="um-entry">Profile</a>
+        <a href="#" class="um-entry">Preferences</a>
+        <a href="#" class="um-entry">Private files</a>
+        <div class="um-divider"></div>
+        <a href="#" class="um-entry" id="signOutBtn">Sign out</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <label class="edit-mode-toggle">
+      <span>Edit mode</span>
+      <input type="checkbox" id="editModeToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="hero-banner" style="background-image:url('https://picsum.photos/seed/applieduxguest/1200/400')">
+    <div class="instructor"><img src="https://i.pravatar.cc/80?img=47" alt="Course lead"></div>
+    <div class="hero-text">
+      <h1>IS71093C: APPLIED UX TOPICS AND GUEST LECTURES (2025-26)</h1>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="v3-course.html">Course</a>
+    <a href="v3-assignment.html">Assessment</a>
+    <a href="v3-reading-list.html">Reading List</a>
+    <a href="v3-participant.html" class="active">Participant</a>
+    <a href="v3-instructor.html">Instructor</a>
+    <div class="tab-add">
+      <button class="tab-add-btn" title="Add a section to this course" aria-haspopup="true">+</button>
+      <div class="tab-add-panel">
+        <div class="tab-add-head">Add section</div>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="quiz"><span>Quiz</span></label>
+        <label class="tab-add-item"><input type="checkbox" data-tab-add="resources"><span>Resources</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="assign-main" style="max-width:1000px;margin:0 auto;">
+
+    <div class="section-head" style="margin-bottom:12px;">
+      <h2 style="font-size:18px;">Participants <span class="toc-count">16</span></h2>
+      <div class="actions">
+        <div class="search-box"><input type="search" id="participantSearch" placeholder="Search by name..."></div>
+        <select id="groupFilter">
+          <option value="all">All Groups</option>
+          <option value="A">Group A</option>
+          <option value="B">Group B</option>
+          <option value="C">Group C</option>
+          <option value="D">Group D</option>
+          <option value="staff">Staff</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="participant-table">
+        <thead>
+          <tr><th>Name</th><th>Role</th><th>Group</th><th>Email</th><th>Last Access</th></tr>
+        </thead>
+        <tbody>
+          <tr data-name="dr rafael tahir" data-group="staff">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=47"><span>Dr Rafael Tahir</span></td>
+            <td><span class="role-tag lead">Module Leader</span></td>
+            <td>Staff</td><td>r.tahir@gold.ac.uk</td><td>Today</td>
+          </tr>
+          <tr data-name="amelia hart" data-group="A">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=1"><span>Amelia Hart</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group A</td><td>a.hart@student.gold.ac.uk</td><td>2 hours ago</td>
+          </tr>
+          <tr data-name="benjamin okafor" data-group="A">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=2"><span>Benjamin Okafor</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group A</td><td>b.okafor@student.gold.ac.uk</td><td>Yesterday</td>
+          </tr>
+          <tr data-name="chloe wynter" data-group="A">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=3"><span>Chloe Wynter</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group A</td><td>c.wynter@student.gold.ac.uk</td><td>3 days ago</td>
+          </tr>
+          <tr data-name="daniel petrov" data-group="A">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=4"><span>Daniel Petrov</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group A</td><td>d.petrov@student.gold.ac.uk</td><td>Today</td>
+          </tr>
+          <tr data-name="esther mensah" data-group="B">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=5"><span>Esther Mensah</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group B</td><td>e.mensah@student.gold.ac.uk</td><td>2 days ago</td>
+          </tr>
+          <tr data-name="felix zhang" data-group="B">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=6"><span>Felix Zhang</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group B</td><td>f.zhang@student.gold.ac.uk</td><td>Today</td>
+          </tr>
+          <tr data-name="grace lindqvist" data-group="B">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=7"><span>Grace Lindqvist</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group B</td><td>g.lindqvist@student.gold.ac.uk</td><td>4 days ago</td>
+          </tr>
+          <tr data-name="harun demir" data-group="B">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=8"><span>Harun Demir</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group B</td><td>h.demir@student.gold.ac.uk</td><td>Yesterday</td>
+          </tr>
+          <tr data-name="isabelle moreau" data-group="C">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=9"><span>Isabelle Moreau</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group C</td><td>i.moreau@student.gold.ac.uk</td><td>Today</td>
+          </tr>
+          <tr data-name="jayden brooks" data-group="C">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=10"><span>Jayden Brooks</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group C</td><td>j.brooks@student.gold.ac.uk</td><td>5 days ago</td>
+          </tr>
+          <tr data-name="kavya nair" data-group="C">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=11"><span>Kavya Nair</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group C</td><td>k.nair@student.gold.ac.uk</td><td>Today</td>
+          </tr>
+          <tr data-name="liam fitzgerald" data-group="C">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=12"><span>Liam Fitzgerald</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group C</td><td>l.fitzgerald@student.gold.ac.uk</td><td>2 hours ago</td>
+          </tr>
+          <tr data-name="mei ling tan" data-group="D">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=13"><span>Mei Ling Tan</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group D</td><td>m.tan@student.gold.ac.uk</td><td>Yesterday</td>
+          </tr>
+          <tr data-name="noah abramson" data-group="D">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=14"><span>Noah Abramson</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group D</td><td>n.abramson@student.gold.ac.uk</td><td>Today</td>
+          </tr>
+          <tr data-name="olivia stroud" data-group="D">
+            <td><img class="p-avatar" src="https://i.pravatar.cc/40?img=15"><span>Olivia Stroud</span></td>
+            <td><span class="role-tag">Student</span></td>
+            <td>Group D</td><td>o.stroud@student.gold.ac.uk</td><td>3 days ago</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer">Learn.gold VLE Co-design Wireframe → Web build v2 · Participant Page</footer>
+
+<script src="v3-script.js"></script>
+</body>
+</html>
